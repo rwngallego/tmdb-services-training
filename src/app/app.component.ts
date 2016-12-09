@@ -14,7 +14,10 @@ export class AppComponent implements OnInit {
   constructor(private movieService: MovieService){}
 
   ngOnInit(){
-    this.movies = this.movieService.get();
+    this.movieService.get()
+      .subscribe(movies => {
+        this.movies = movies;
+      });
   }
 
   getUrl(src: string): string {
